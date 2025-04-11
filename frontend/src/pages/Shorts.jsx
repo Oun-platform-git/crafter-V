@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
+import { ShortsCrafter } from "../components/shorts-crafter/ShortsCrafter";
+import { ChakraProvider } from "@chakra-ui/react";
+
 export default function Shorts() {
+  const handleSave = async (videoData) => {
+    try {
+      // TODO: Implement save logic
+      console.log("Saving video:", videoData);
+    } catch (error) {
+      console.error("Error saving video:", error);
+    }
+  };
+
+  const handleShare = async (platform, data) => {
+    try {
+      // TODO: Implement share logic
+      console.log("Sharing to", platform, ":", data);
+    } catch (error) {
+      console.error("Error sharing video:", error);
+    }
+  };
+
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Create Shorts 🎞</h1>
-      <p>Leverage AI to turn your videos into engaging Shorts!</p>
-    </div>
+    <ChakraProvider>
+      <div className="w-full h-full bg-gray-950">
+        <ShortsCrafter onSave={handleSave} onShare={handleShare} />
+      </div>
+    </ChakraProvider>
   );
 }
